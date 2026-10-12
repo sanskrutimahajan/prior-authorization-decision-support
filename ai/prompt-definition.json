@@ -1,0 +1,18 @@
+{
+  "artifactKind": "Authoring reference; not a native solution export",
+  "name": "Prior Authorization Evidence Extractor",
+  "modelObserved": "GPT-4.1 mini",
+  "inputs": [
+    {
+      "name": "DocumentText",
+      "type": "Text"
+    }
+  ],
+  "outputMode": "Text with instructed JSON",
+  "instructionsFile": "prompt.txt",
+  "scope": {
+    "diagnosis": "Lumbar Radiculopathy",
+    "treatment": "Lumbar Epidural Steroid Injection"
+  },
+  "deploymentState": "AI Builder prompt saved; canvas app published on 2026-10-12"
+}

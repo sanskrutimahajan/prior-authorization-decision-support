@@ -1,0 +1,479 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  scrCaseDetails:
+    Properties:
+      Fill: =RGBA(248,250,252,1)
+      OnVisible: '=Set(varShowHistory, false); Reset(TextInput1); Reset(TextInput2); Reset(TextInput3); Set(varAnalyzed, false); Clear(colAuthorizationResults); Reset(chkImaging); Reset(chkMedication); Reset(chkSpecialist); Reset(chkFunction); Reset(chkConservative); Reset(txtPTWeeks); Reset(txtSymptomMonths); Reset(txtAssignedReviewer) '
+    Children:
+      - lblCaseHeading:
+          Control: Label@2.5.1
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =48
+            Size: =24
+            Text: ="Case review"
+            Width: =600
+            X: =24
+            Y: =16
+      - lblSelectedCase:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Size: =18
+            Text: =varSelectedCase.'Case Number' & "  |  " & varSelectedCase.'Patient Name'
+            Width: =620
+            X: =24
+            Y: =66
+      - lblCaseContext:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =92
+            Size: =12
+            Text: |-
+              ="Payer: " & Coalesce(varSelectedCase.Payer,"—") & Char(10) & "Treatment: " & Coalesce(varSelectedCase.Treatment,"—") & Char(10) & "Diagnosis: " & Coalesce(varSelectedCase.Diagnosis,"—")
+            Width: =Parent.Width / 2 - 48
+            X: =24
+            Y: =110
+      - lblEvidenceTitle:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =32
+            Size: =15
+            Text: ="Evidence"
+            Width: =500
+            X: =24
+            Y: =210
+      - chkImaging:
+          Control: Classic/CheckBox@2.1.0
+          Properties:
+            Default: =varSelectedCase.'Imaging Available' = true
+            Height: =40
+            OnCheck: =Set(varAnalyzed, false)
+            OnUncheck: =Set(varAnalyzed, false)
+            Size: =12
+            Text: ="Imaging Available"
+            Width: =590
+            X: =24
+            Y: =250
+      - chkMedication:
+          Control: Classic/CheckBox@2.1.0
+          Properties:
+            Default: =varSelectedCase.'Medication Trial' = true
+            Height: =40
+            OnCheck: =Set(varAnalyzed, false)
+            OnUncheck: =Set(varAnalyzed, false)
+            Size: =12
+            Text: ="Medication Trial"
+            Width: =590
+            X: =24
+            Y: =293
+      - chkSpecialist:
+          Control: Classic/CheckBox@2.1.0
+          Properties:
+            Default: =varSelectedCase.'Specialist Evaluation' = true
+            Height: =40
+            OnCheck: =Set(varAnalyzed, false)
+            OnUncheck: =Set(varAnalyzed, false)
+            Size: =12
+            Text: ="Specialist Evaluation"
+            Width: =590
+            X: =24
+            Y: =336
+      - chkFunction:
+          Control: Classic/CheckBox@2.1.0
+          Properties:
+            Default: =varSelectedCase.'Functional Limitation' = true
+            Height: =40
+            OnCheck: =Set(varAnalyzed, false)
+            OnUncheck: =Set(varAnalyzed, false)
+            Size: =12
+            Text: ="Functional Limitation"
+            Width: =590
+            X: =24
+            Y: =379
+      - chkConservative:
+          Control: Classic/CheckBox@2.1.0
+          Properties:
+            Default: =varSelectedCase.'Conservative Treatment Failed' = true
+            Height: =40
+            OnCheck: '=Set(varAnalyzed, false) '
+            OnUncheck: '=Set(varAnalyzed, false) '
+            Size: =12
+            Text: ="Conservative Treatment Failed"
+            Width: =590
+            X: =24
+            Y: =422
+      - lblPTWeeks:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =32
+            Size: =12
+            Text: ="Physical therapy (weeks)"
+            Width: =275
+            X: =24
+            Y: =480
+      - lblSymptomMonths:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =32
+            Size: =12
+            Text: ="Symptoms duration (months)"
+            Width: =280
+            X: =txtSymptomMonths.X
+            Y: =480
+      - txtPTWeeks:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =RGBA(203,213,225,1)
+            BorderThickness: =1
+            Default: =Text(varSelectedCase.'Physical Therapy Weeks')
+            Format: =TextFormat.Number
+            HintText: ="Enter completed duration"
+            OnChange: '=Set(varAnalyzed, false) '
+            Size: =12
+            Width: =Parent.Width / 4 - 36
+            X: =24
+            Y: =518
+      - txtSymptomMonths:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderThickness: =1
+            Default: =Text(varSelectedCase.'Symptoms Duration Months')
+            Format: =TextFormat.Number
+            HintText: ="Enter completed duration"
+            OnChange: '=Set(varAnalyzed, false) '
+            Size: =12
+            Width: =txtPTWeeks.Width
+            X: =txtPTWeeks.X + txtPTWeeks.Width + 24
+            Y: =518
+      - lblReviewer:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =32
+            Size: =12
+            Text: ="Assigned reviewer (email)"
+            Width: =400
+            X: =24
+            Y: =568
+      - txtAssignedReviewer:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =RGBA(203,213,225,1)
+            BorderThickness: =1
+            Default: |-
+              =Coalesce(
+                  varSelectedCase.'Assigned Reviewer',
+                  "reviewer@example.com"
+              )
+            Size: =12
+            Width: =Parent.Width / 2 - 48
+            X: =24
+            Y: =606
+      - btnDetailsBack:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =RGBA(203,213,225,1)
+            BorderThickness: =1
+            Color: =RGBA(51,65,85,1)
+            Fill: =Color.White
+            OnSelect: =Refresh('Prior Authorization Cases'); Navigate(Screen1, ScreenTransition.Fade)
+            Size: =12
+            Text: ="Back to dashboard"
+            Width: =245
+            X: =Parent.Width - Self.Width - 36
+            Y: =20
+      - lblCurrentStatus:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Size: =18
+            Text: |-
+              ="Status: " & Text(varSelectedCase.'Status (cr36f_status)')
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =66
+      - lblPolicyHeading:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =36
+            Size: =15
+            Text: =If(varShowHistory,"Decision history","Requirements")
+            Width: =300
+            X: =Parent.Width / 2 + 16
+            Y: =118
+      - lblAnalysisSummary:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =64
+            Text: =If(!varAnalyzed,"Save evidence to check the matching requirements.",If(IsEmpty(colAuthorizationResults),"No active requirements match this payer, treatment and diagnosis.",Text(CountIf(colAuthorizationResults,Result="Met")) & " of " & Text(CountRows(colAuthorizationResults)) & " met  •  " & Text(100 * CountIf(colAuthorizationResults,Result="Met") / CountRows(colAuthorizationResults),"0") & "% readiness"))
+            Visible: '=!varShowHistory '
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =158
+      - galAuthorizationResults:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+          Properties:
+            Fill: =Color.White
+            Height: '=280 '
+            Items: =colAuthorizationResults
+            TemplatePadding: =4
+            TemplateSize: =54
+            Visible: '=varAnalyzed && !varShowHistory  '
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =234
+          Children:
+            - lblCriterionName:
+                Control: Label@2.5.1
+                Properties:
+                  FontWeight: =FontWeight.Semibold
+                  Height: =24
+                  Size: =12
+                  Text: =ThisItem.'Requirement Name'
+                  Width: =Parent.TemplateWidth - 115
+            - lblCriterionEvidence:
+                Control: Label@2.5.1
+                Properties:
+                  Height: =28
+                  Size: =10
+                  Text: "=Substitute(ThisItem.'Required Evidence', \"Demonstration \", \"\") & If(Text(ThisItem.'Rule Type') = \"Minimum Duration\", \" (minimum \" & Text(ThisItem.'Minimum Duration') & If(ThisItem.'Requirement Name' = \"Physical Therapy\", \" weeks)\", \" months)\"), \"\")    "
+                  Width: =Parent.TemplateWidth - 115
+                  Y: =24
+            - lblCriterionResult:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =If(ThisItem.Result = "Met", Color.DarkGreen, Color.DarkRed)
+                  FontWeight: =FontWeight.Semibold
+                  Size: =12
+                  Text: =ThisItem.Result
+                  Width: =100
+                  X: =Parent.TemplateWidth - 105
+      - btnAnalyzeAuthorization:
+          Control: Classic/Button@2.2.0
+          Properties:
+            Color: =Color.White
+            Fill: =RGBA(15,108,189,1)
+            OnSelect: "=If(IsBlank(txtPTWeeks.Text) || IsBlank(txtSymptomMonths.Text) || Value(txtPTWeeks.Text) < 0 || Value(txtSymptomMonths.Text) < 0 || Mod(Value(txtPTWeeks.Text),1) <> 0 || Mod(Value(txtSymptomMonths.Text),1) <> 0, Notify(\"Enter non-negative whole numbers for both durations.\", NotificationType.Error), IfError(Set(varSelectedCase, Patch('Prior Authorization Cases', varSelectedCase, {'Physical Therapy Weeks': Value(txtPTWeeks.Text), 'Symptoms Duration Months': Value(txtSymptomMonths.Text), 'Imaging Available': chkImaging.Value, 'Medication Trial': chkMedication.Value, 'Specialist Evaluation': chkSpecialist.Value, 'Functional Limitation': chkFunction.Value, 'Conservative Treatment Failed': chkConservative.Value, 'Assigned Reviewer': Trim(txtAssignedReviewer.Text)})); ClearCollect(colAuthorizationResults, AddColumns(Filter('Prior Authorization Requirements', Payer = varSelectedCase.Payer && Treatment = varSelectedCase.Treatment && Diagnosis = varSelectedCase.Diagnosis && Active = true) As rule, Result, If(Switch(rule.'Requirement Name', \"Confirmed Diagnosis\", !IsBlank(Trim(varSelectedCase.Diagnosis)), \"Imaging Available\", varSelectedCase.'Imaging Available' = true, \"Physical Therapy\", !IsBlank(varSelectedCase.'Physical Therapy Weeks') && varSelectedCase.'Physical Therapy Weeks' >= rule.'Minimum Duration', \"Medication Trial\", varSelectedCase.'Medication Trial' = true, \"Specialist Evaluation\", varSelectedCase.'Specialist Evaluation' = true, \"Symptoms Duration\", !IsBlank(varSelectedCase.'Symptoms Duration Months') && varSelectedCase.'Symptoms Duration Months' >= rule.'Minimum Duration', \"Functional Limitation\", varSelectedCase.'Functional Limitation' = true, \"Conservative Treatment Failed\", varSelectedCase.'Conservative Treatment Failed' = true, false), \"Met\", \"Missing\"))); Set(varAnalyzed, true), Notify(\"Could not save or analyze. Please retry.\", NotificationType.Error)))  "
+            Size: =12
+            Text: ="Save and check requirements"
+            Width: =310
+            X: =24
+            Y: =664
+      - btnStatusPending:
+          Control: Classic/Button@2.2.0
+          Properties:
+            Color: =RGBA(51,65,85,1)
+            DisplayMode: '=If(varShowHistory, DisplayMode.Disabled, DisplayMode.Edit)  '
+            Fill: =RGBA(226,232,240,1)
+            OnSelect: "=If(IsBlank(Trim(TextInput1.Text)) || IsBlank(Trim(txtAssignedReviewer.Text)), Notify(\"Enter a reviewer and a reason for the status change.\", NotificationType.Error), With({currentCase: LookUp('Prior Authorization Cases', 'Prior Authorization Case' = varSelectedCase.'Prior Authorization Case')}, If(Text(currentCase.'Status (cr36f_status)') = \"Pending\", Set(varSelectedCase, currentCase); Notify(\"This case already has that status.\", NotificationType.Information), IfError(Set(varDecisionEvent, Patch('Authorization Decisions', Defaults('Authorization Decisions'), {'Decision Name': Text(GUID()), 'Authorization Case': currentCase, 'Decision Time': Now(), 'Previous Status': Text(currentCase.'Status (cr36f_status)'), 'New Status': \"Pending\", Reviewer: Trim(txtAssignedReviewer.Text), Reason: Trim(TextInput1.Text), 'Reviewer Notes': Trim(TextInput2.Text), Outcome: \"Pending\"})); IfError(Set(varSelectedCase, Patch('Prior Authorization Cases', currentCase, {'Status (cr36f_status)': 'Status (Prior Authorization Cases)'.Pending, 'Assigned Reviewer': Trim(txtAssignedReviewer.Text)})); IfError(Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Applied\"}); Refresh('Authorization Decisions'); Reset(TextInput1); Reset(TextInput2); Reset(TextInput3); Notify(\"Status and decision history saved.\", NotificationType.Success), Notify(\"Status saved. The history entry needs reconciliation; do not resubmit this decision.\", NotificationType.Error)), Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Failed\"}); Notify(\"Status was not saved. Please retry.\", NotificationType.Error)), Notify(\"Could not create the decision record. Status is unchanged.\", NotificationType.Error)))))  "
+            Size: =12
+            Text: ="Pending"
+            Width: =Parent.Width / 8 - 19
+            X: =Parent.Width / 2 + 16
+            Y: =664
+      - btnStatusInReview:
+          Control: Classic/Button@2.2.0
+          Properties:
+            Color: =RGBA(30,64,175,1)
+            DisplayMode: '=If(varShowHistory, DisplayMode.Disabled, DisplayMode.Edit)  '
+            Fill: =RGBA(219,234,254,1)
+            OnSelect: "=If(IsBlank(Trim(TextInput1.Text)) || IsBlank(Trim(txtAssignedReviewer.Text)), Notify(\"Enter a reviewer and a reason for the status change.\", NotificationType.Error), With({currentCase: LookUp('Prior Authorization Cases', 'Prior Authorization Case' = varSelectedCase.'Prior Authorization Case')}, If(Text(currentCase.'Status (cr36f_status)') = \"In Review\", Set(varSelectedCase, currentCase); Notify(\"This case already has that status.\", NotificationType.Information), IfError(Set(varDecisionEvent, Patch('Authorization Decisions', Defaults('Authorization Decisions'), {'Decision Name': Text(GUID()), 'Authorization Case': currentCase, 'Decision Time': Now(), 'Previous Status': Text(currentCase.'Status (cr36f_status)'), 'New Status': \"In Review\", Reviewer: Trim(txtAssignedReviewer.Text), Reason: Trim(TextInput1.Text), 'Reviewer Notes': Trim(TextInput2.Text), Outcome: \"Pending\"})); IfError(Set(varSelectedCase, Patch('Prior Authorization Cases', currentCase, {'Status (cr36f_status)': 'Status (Prior Authorization Cases)'.'In Review', 'Assigned Reviewer': Trim(txtAssignedReviewer.Text)})); IfError(Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Applied\"}); Refresh('Authorization Decisions'); Reset(TextInput1); Reset(TextInput2); Reset(TextInput3); Notify(\"Status and decision history saved.\", NotificationType.Success), Notify(\"Status saved. The history entry needs reconciliation; do not resubmit this decision.\", NotificationType.Error)), Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Failed\"}); Notify(\"Status was not saved. Please retry.\", NotificationType.Error)), Notify(\"Could not create the decision record. Status is unchanged.\", NotificationType.Error)))))  "
+            Size: =12
+            Text: ="In Review"
+            Width: =Parent.Width / 8 - 19
+            X: =btnStatusPending.X + btnStatusPending.Width + 8
+            Y: =664
+      - btnStatusApproved:
+          Control: Classic/Button@2.2.0
+          Properties:
+            Color: =RGBA(22,101,52,1)
+            DisplayMode: '=If(!varShowHistory && varAnalyzed && CountRows(colAuthorizationResults) > 0 && CountIf(colAuthorizationResults, Result = "Missing") = 0, DisplayMode.Edit, DisplayMode.Disabled)    '
+            Fill: =RGBA(220,252,231,1)
+            OnSelect: "=If(IsBlank(Trim(TextInput1.Text)) || IsBlank(Trim(txtAssignedReviewer.Text)), Notify(\"Enter a reviewer and a reason for the status change.\", NotificationType.Error), With({currentCase: LookUp('Prior Authorization Cases', 'Prior Authorization Case' = varSelectedCase.'Prior Authorization Case')}, If(Text(currentCase.'Status (cr36f_status)') = \"Approved\", Set(varSelectedCase, currentCase); Notify(\"This case already has that status.\", NotificationType.Information), IfError(Set(varDecisionEvent, Patch('Authorization Decisions', Defaults('Authorization Decisions'), {'Decision Name': Text(GUID()), 'Authorization Case': currentCase, 'Decision Time': Now(), 'Previous Status': Text(currentCase.'Status (cr36f_status)'), 'New Status': \"Approved\", Reviewer: Trim(txtAssignedReviewer.Text), Reason: Trim(TextInput1.Text), 'Reviewer Notes': Trim(TextInput2.Text), Outcome: \"Pending\"})); IfError(Set(varSelectedCase, Patch('Prior Authorization Cases', currentCase, {'Status (cr36f_status)': 'Status (Prior Authorization Cases)'.Approved, 'Assigned Reviewer': Trim(txtAssignedReviewer.Text)})); IfError(Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Applied\"}); Refresh('Authorization Decisions'); Reset(TextInput1); Reset(TextInput2); Reset(TextInput3); Notify(\"Status and decision history saved.\", NotificationType.Success), Notify(\"Status saved. The history entry needs reconciliation; do not resubmit this decision.\", NotificationType.Error)), Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Failed\"}); Notify(\"Status was not saved. Please retry.\", NotificationType.Error)), Notify(\"Could not create the decision record. Status is unchanged.\", NotificationType.Error)))))   "
+            Size: =12
+            Text: ="Approved"
+            Width: =Parent.Width / 8 - 19
+            X: =btnStatusInReview.X + btnStatusInReview.Width + 8
+            Y: =664
+      - btnStatusDenied:
+          Control: Classic/Button@2.2.0
+          Properties:
+            Color: =RGBA(153,27,27,1)
+            DisplayMode: '=If(varShowHistory, DisplayMode.Disabled, DisplayMode.Edit)  '
+            Fill: =RGBA(254,226,226,1)
+            OnSelect: "=If(IsBlank(Trim(TextInput1.Text)) || IsBlank(Trim(txtAssignedReviewer.Text)), Notify(\"Enter a reviewer and a reason for the status change.\", NotificationType.Error), With({currentCase: LookUp('Prior Authorization Cases', 'Prior Authorization Case' = varSelectedCase.'Prior Authorization Case')}, If(Text(currentCase.'Status (cr36f_status)') = \"Denied\", Set(varSelectedCase, currentCase); Notify(\"This case already has that status.\", NotificationType.Information), IfError(Set(varDecisionEvent, Patch('Authorization Decisions', Defaults('Authorization Decisions'), {'Decision Name': Text(GUID()), 'Authorization Case': currentCase, 'Decision Time': Now(), 'Previous Status': Text(currentCase.'Status (cr36f_status)'), 'New Status': \"Denied\", Reviewer: Trim(txtAssignedReviewer.Text), Reason: Trim(TextInput1.Text), 'Reviewer Notes': Trim(TextInput2.Text), Outcome: \"Pending\"})); IfError(Set(varSelectedCase, Patch('Prior Authorization Cases', currentCase, {'Status (cr36f_status)': 'Status (Prior Authorization Cases)'.Denied, 'Assigned Reviewer': Trim(txtAssignedReviewer.Text)})); IfError(Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Applied\"}); Refresh('Authorization Decisions'); Reset(TextInput1); Reset(TextInput2); Reset(TextInput3); Notify(\"Status and decision history saved.\", NotificationType.Success), Notify(\"Status saved. The history entry needs reconciliation; do not resubmit this decision.\", NotificationType.Error)), Patch('Authorization Decisions', varDecisionEvent, {Outcome: \"Failed\"}); Notify(\"Status was not saved. Please retry.\", NotificationType.Error)), Notify(\"Could not create the decision record. Status is unchanged.\", NotificationType.Error))))) "
+            Size: =12
+            Text: ="Denied"
+            Width: =Parent.Width / 8 - 19
+            X: =btnStatusApproved.X + btnStatusApproved.Width + 8
+            Y: =664
+      - lblDemoNote:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =28
+            Size: =10
+            Text: ="Demonstration rules only. Not clinical guidance."
+            Width: =1270
+            X: =24
+            Y: =724
+      - TextInput1:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            AccessibleLabel: '="Reason for status change"  '
+            BorderColor: =RGBA(245, 245, 245, 1)
+            Color: =RGBA(50, 49, 48, 1)
+            Default: '=""  '
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            Font: =Font.'Segoe UI'
+            Height: '=40  '
+            HintText: '="Reason for status change (required)"   '
+            HoverBorderColor: =RGBA(16, 110, 190, 1)
+            HoverColor: =RGBA(50, 49, 48, 1)
+            HoverFill: =RGBA(255, 255, 255, 1)
+            MaxLength: '=300 '
+            PressedBorderColor: =RGBA(0, 120, 212, 1)
+            PressedColor: =RGBA(50, 49, 48, 1)
+            PressedFill: =RGBA(255, 255, 255, 1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Visible: '=!varShowHistory '
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: '=530 '
+      - TextInput2:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            AccessibleLabel: '="Reviewer notes"    '
+            BorderColor: =RGBA(245, 245, 245, 1)
+            Color: =RGBA(50, 49, 48, 1)
+            Default: '=""  '
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            Font: =Font.'Segoe UI'
+            Height: '=64  '
+            HintText: '="Reviewer notes (optional)" '
+            HoverBorderColor: =RGBA(16, 110, 190, 1)
+            HoverColor: =RGBA(50, 49, 48, 1)
+            HoverFill: =RGBA(255, 255, 255, 1)
+            MaxLength: '=1000    '
+            Mode: '=TextMode.MultiLine  '
+            PressedBorderColor: =RGBA(0, 120, 212, 1)
+            PressedColor: =RGBA(50, 49, 48, 1)
+            PressedFill: =RGBA(255, 255, 255, 1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Visible: '=!varShowHistory '
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: '=580 '
+      - TextInput3:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            AccessibleLabel: '="Decision history, newest first"    '
+            BorderColor: =RGBA(245, 245, 245, 1)
+            Color: =RGBA(50, 49, 48, 1)
+            Default: "=With({events: Sort(Filter('Authorization Decisions', 'Authorization Case'.'Prior Authorization Case' = varSelectedCase.'Prior Authorization Case'), 'Decision Time', SortOrder.Descending)}, If(IsEmpty(events), \"No recorded decisions yet.\", Concat(events, Text(DateAdd('Decision Time', TimeZoneOffset('Decision Time'), TimeUnit.Minutes), \"yyyy-mm-dd HH:mm:ss\") & \" UTC | \" & 'Previous Status' & \" → \" & 'New Status' & \" [\" & Outcome & \"]\" & Char(10) & \"Reviewer: \" & Reviewer & Char(10) & \"Reason: \" & Reason & If(!IsBlank('Reviewer Notes'), Char(10) & \"Notes: \" & 'Reviewer Notes', \"\"), Char(10) & Char(10))))    "
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            DisplayMode: '=DisplayMode.View    '
+            Font: =Font.'Segoe UI'
+            Height: '=464 '
+            HoverBorderColor: =RGBA(16, 110, 190, 1)
+            HoverColor: =RGBA(50, 49, 48, 1)
+            HoverFill: =RGBA(255, 255, 255, 1)
+            Mode: '=TextMode.MultiLine  '
+            PressedBorderColor: =RGBA(0, 120, 212, 1)
+            PressedColor: =RGBA(50, 49, 48, 1)
+            PressedFill: =RGBA(255, 255, 255, 1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Visible: '=varShowHistory  '
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: '=180 '
+      - Button1:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =RGBA(203,213,225,1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =1
+            Color: =RGBA(15,108,189,1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            Fill: =Color.White
+            Font: =Font.'Segoe UI'
+            Height: '=40  '
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(16, 110, 190, 1)
+            OnSelect: "=Refresh('Authorization Decisions'); Set(varShowHistory, !varShowHistory); Reset(TextInput3) "
+            PressedBorderColor: =RGBA(0, 69, 120, 1)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(16, 110, 190, 1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: '=12  '
+            Text: =If(varShowHistory,"Close history","Decision history")
+            Width: '=300 '
+            X: =Parent.Width - Self.Width - 36
+            Y: '=110 '
+      - btnAIAssist:
+          Control: Classic/Button@2.2.0
+          Properties:
+            DisplayMode: =If(varSelectedCase.Diagnosis="Lumbar Radiculopathy" && varSelectedCase.Treatment="Lumbar Epidural Steroid Injection",DisplayMode.Edit,DisplayMode.Disabled)
+            OnSelect: =If(Trim(txtAssignedReviewer.Text)<>Coalesce(varSelectedCase.'Assigned Reviewer',"reviewer@example.com") || IsBlank(txtPTWeeks.Text) || IsBlank(txtSymptomMonths.Text) || chkImaging.Value<>(varSelectedCase.'Imaging Available'=true) || chkMedication.Value<>(varSelectedCase.'Medication Trial'=true) || chkSpecialist.Value<>(varSelectedCase.'Specialist Evaluation'=true) || chkFunction.Value<>(varSelectedCase.'Functional Limitation'=true) || chkConservative.Value<>(varSelectedCase.'Conservative Treatment Failed'=true) || Value(txtPTWeeks.Text)<>varSelectedCase.'Physical Therapy Weeks' || Value(txtSymptomMonths.Text)<>varSelectedCase.'Symptoms Duration Months' || !IsBlank(Trim(TextInput1.Text)) || !IsBlank(Trim(TextInput2.Text)),Notify("Save evidence or finish the current reviewer entry before opening AI assist.",NotificationType.Information),Navigate(scrAIEvidence,ScreenTransition.None))
+            Size: =12
+            Text: ="Extract from document"
+            Tooltip: ="Available for the lumbar demonstration scenario. Save current evidence first."
+            Width: =250
+            X: =btnDetailsBack.X - Self.Width - 24
+            Y: =20
+      - rectCaseDivider:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(226,232,240,1)
+            Height: =580
+            Width: =1
+            X: =Parent.Width / 2 - 12
+            Y: =118

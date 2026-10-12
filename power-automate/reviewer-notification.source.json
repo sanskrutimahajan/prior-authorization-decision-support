@@ -1,0 +1,82 @@
+{
+  "status": "Unpublished draft",
+  "captured": "2026-10-12",
+  "flowName": "Prior Authorization - Reviewer Notification",
+  "note": "UI Code view extracts; reference source, not an importable solution package.",
+  "triggers": {
+    "When_a_row_is_added,_modified_or_deleted": {
+      "type": "OpenApiConnectionWebhook",
+      "inputs": {
+        "parameters": {
+          "subscriptionRequest/message": 4,
+          "subscriptionRequest/entityname": "cr36f_authorizationdecision",
+          "subscriptionRequest/scope": 4,
+          "subscriptionRequest/filteringattributes": "cr36f_outcome",
+          "subscriptionRequest/filterexpression": "cr36f_outcome eq 'Applied' and cr36f_newstatus eq 'In Review' and cr36f_previousstatus ne 'In Review'"
+        },
+        "host": {
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+          "connection": "shared_commondataserviceforapps",
+          "operationId": "SubscribeWebhookTrigger"
+        }
+      }
+    }
+  },
+  "actions": {
+    "Get_a_row_by_ID": {
+      "type": "OpenApiConnection",
+      "inputs": {
+        "parameters": {
+          "entityName": "cr36f_priorauthorizationcases",
+          "recordId": "@triggerOutputs()?['body/_cr36f_authorizationcase_value']",
+          "$select": "cr36f_casenumber,cr36f_assignedreviewer,cr36f_status"
+        },
+        "host": {
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+          "connection": "shared_commondataserviceforapps",
+          "operationId": "GetItem"
+        }
+      },
+      "runAfter": {}
+    },
+    "Condition": {
+      "type": "If",
+      "expression": {
+        "and": [
+          {
+            "equals": [
+              "@and(equals(outputs('Get_a_row_by_ID')?['body/cr36f_status@OData.Community.Display.V1.FormattedValue'], 'In Review'), equals(toLower(trim(coalesce(outputs('Get_a_row_by_ID')?['body/cr36f_assignedreviewer'], ''))), toLower(trim(coalesce(triggerOutputs()?['body/cr36f_reviewer'], '')))), contains(trim(coalesce(triggerOutputs()?['body/cr36f_reviewer'], '')), '@'), not(endsWith(toLower(trim(coalesce(triggerOutputs()?['body/cr36f_reviewer'], ''))), '@example.com')), not(contains(coalesce(triggerOutputs()?['body/cr36f_reviewer'], ''), ';')), not(contains(coalesce(triggerOutputs()?['body/cr36f_reviewer'], ''), ',')))",
+              "@true"
+            ]
+          }
+        ]
+      },
+      "actions": {
+        "Send_an_email_(V2)": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "emailMessage/To": "@trim(triggerOutputs()?['body/cr36f_reviewer'])",
+              "emailMessage/Subject": "Review requested | Case @{outputs('Get_a_row_by_ID')?['body/cr36f_casenumber']}",
+              "emailMessage/Body": "<p class=\"editor-paragraph\">A prior-authorization case is ready for your review.<br><br>Case: @{outputs('Get_a_row_by_ID')?['body/cr36f_casenumber']}<br>Status: In Review<br>Recorded (UTC): @{triggerOutputs()?['body/cr36f_decisiontime']}<br><br>Open the Prior-authorization Workflow app and search for this case number to review the evidence and record your decision.<br><br>This notification contains demonstration workflow data. Reviewer decisions remain in the application.</p>",
+              "emailMessage/Importance": "Normal"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "connection": "shared_office365",
+              "operationId": "SendEmailV2"
+            }
+          }
+        }
+      },
+      "else": {
+        "actions": {}
+      },
+      "runAfter": {
+        "Get_a_row_by_ID": [
+          "SUCCEEDED"
+        ]
+      }
+    }
+  }
+}

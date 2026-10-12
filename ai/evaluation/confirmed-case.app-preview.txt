@@ -1,0 +1,84 @@
+        - generic "scrCaseDetails"
+        - button "Back to dashboard":
+          - generic: Back to dashboard
+        - button "View decision history":
+          - generic: View decision history
+        - button "Save evidence & analyze" [active]:
+          - generic: Save evidence & analyze
+        - button "Pending":
+          - generic: Pending
+        - button "In Review":
+          - generic: In Review
+        - button "Approved":
+          - generic: Approved
+        - button "Denied":
+          - generic: Denied
+        - generic: Case Details
+        - generic: DEMO-BI-007 | Demo Patient BI 007
+        - generic: "Status: Pending"
+        - text: "Payer: Aetna"
+        - text: "Treatment: Lumbar Epidural Steroid Injection"
+        - text: "Diagnosis: Lumbar Radiculopathy"
+        - generic: AUTHORIZATION REQUIREMENTS
+        - generic: 8 of 8 met • 100% readiness
+        - generic: CASE EVIDENCE
+        - generic: Physical therapy (weeks)
+        - generic: Symptoms duration (months)
+        - generic: Assigned reviewer (email)
+        - generic: Demo policy checks support reviewer decisions. Approval is a separate reviewer action.
+        - textbox "Enter completed duration": "6"
+        - textbox "Enter completed duration": "3"
+        - textbox "Reason for status change":
+          - /placeholder: Reason for status change (required)
+        - textbox "Reviewer notes":
+          - /placeholder: Reviewer notes (optional)
+        - textbox: reviewer.ops1@example.com
+        - list "Gallery":
+          - listitem "Item 1. Selected.":
+            - generic: Item 1. Selected.
+            - generic: Confirmed Diagnosis
+            - generic: Met
+            - generic: diagnosis entry
+          - listitem "Item 2":
+            - generic: Item 2
+            - generic: Imaging Available
+            - generic: Met
+            - generic: imaging flag
+          - listitem "Item 3":
+            - generic: Item 3
+            - generic: Physical Therapy
+            - generic: Met
+            - generic: completed weeks (minimum 6 weeks)
+          - listitem "Item 4":
+            - generic: Item 4
+            - generic: Medication Trial
+            - generic: Met
+            - generic: medication flag
+          - listitem "Item 5":
+            - generic: Item 5
+            - generic: Specialist Evaluation
+            - generic: Met
+            - generic: specialist flag
+          - listitem "Item 6":
+            - generic: Item 6
+            - generic: Symptoms Duration
+            - generic: Met
+            - generic: symptom months (minimum 3 months)
+          - listitem "Item 7":
+            - generic: Item 7
+            - generic: Functional Limitation
+            - generic: Met
+            - generic: functional limitation flag
+        - checkbox "Imaging Available" [checked]
+        - generic: Imaging Available
+        - checkbox "Medication Trial" [checked]
+        - generic: Medication Trial
+        - checkbox "Specialist Evaluation" [checked]
+        - generic: Specialist Evaluation
+        - checkbox "Functional Limitation" [checked]
+        - generic: Functional Limitation
+        - checkbox "Conservative Treatment Failed" [checked]
+        - generic: Conservative Treatment Failed
+        - button "AI evidence assist":
+          - generic: AI evidence assist
+

@@ -1,0 +1,33 @@
+{
+  "captured": "2026-10-12",
+  "origin": "fresh Power Apps native download after publication",
+  "sha256": {
+    "src/canvas/Screen1.pa.yaml": "1cfe7726b667c91cb90eadd6d7da5a29e48512ba17e68abf954ff100de9ac4e3",
+    "src/canvas/scrNewCase.pa.yaml": "d7d420772cfd14cddc6f9b87a80130399de05b7d3d0a0fa4ea0a6bfe68bdd8bd",
+    "src/canvas/scrAIEvidence.pa.yaml": "009658710f1f600d8f4f9277a9c5363243ea1b9eb5baa3b343a286389e6151d4",
+    "src/canvas/App.pa.yaml": "4daa2e26e59666973b8353895ce8cef667f73fa115905240f154175f8a453ed5",
+    "src/canvas/scrCaseDetails.pa.yaml": "1434806dcbf16b3e355175028fbb9a477f8c874367b00f3ae7b37e1befc4dbac"
+  },
+  "reportOrigin": "fresh 2026-10-12 Power BI native download; data snapshot 2026-10-09",
+  "reportSha256": {
+    "power-bi/report-definition/version.json": "5795c45bfcefe4155daa96dad275be9efee2d1bbc82c4a8f3bc27cef94d34858",
+    "power-bi/report-definition/report.json": "f7bbc9c71b79f2842c1d976e09ffcebe796afec30e9f64897162a66699e5c16c",
+    "power-bi/report-definition/pages/pages.json": "f7095fe033657704e875d3988b2ff802f20959b0012d4362e3de4f3e69b4d967",
+    "power-bi/report-definition/pages/af42848243d019584809/page.json": "3986ebfcdcd90d9d83f98bfca03766cf059197ac1e2ddef987633f26ef10e550",
+    "power-bi/report-definition/pages/af42848243d019584809/visuals/af7f3065af26ff3798ec/visual.json": "26eee241e950d2176086503284ca6ef9c39e1d83cda9ce8a52126d1d1f2d6bad",
+    "power-bi/report-definition/pages/af42848243d019584809/visuals/92e7f6500c44b4a44192/visual.json": "a9bdc371be5ef4235e65f0911408cd6e8a337ec244512f939dfd2baac44200b1",
+    "power-bi/report-definition/pages/af42848243d019584809/visuals/0496cfd73a4431d7f206/visual.json": "27ecf5c207e35c503890a9135eaabf898097fd507380382d5ca734c024e48afd",
+    "power-bi/report-definition/pages/af42848243d019584809/visuals/b2b3698dcde138ff70d1/visual.json": "2259dc486e9f2730e60f5b30e5cb08036eb4ea1a50512e667d2f515020d364fc",
+    "power-bi/report-definition/pages/af42848243d019584809/visuals/85fb4cd80c947ac21041/visual.json": "7d53702bec1545af7b3d37ff66fd1c9053d4c5711828c63c86884587bb714e5c",
+    "power-bi/report-definition/pages/af42848243d019584809/visuals/fc8512fe1ceda5208445/visual.json": "5b65430bb29681aff648cd99302bd639dcb95b3127a76487fed6d36749e86ae9",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/page.json": "3f8ca14a7b888c12392b6cadd1456fb696de7fd37b34365e9a4ea9f42404d77d",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/f9f520f3b4c5399082bd/visual.json": "c27ec0dcc8fe99eecd38d31e1a78a42bebc5eca6b875b8066aa02bcac83896b7",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/2eebba1d42f363cb75d4/visual.json": "9ae7ca4a9a7ecd52f7883853263e16364a338550dd3bef0c6bb96c6bc34e1059",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/928e1c235b6bcd1cfa6e/visual.json": "f21ab09890d4ad24c3d343fe288fab248cc6f3c352b69840fa5877c9914ae8b5",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/ea23a6df9412d796ba40/visual.json": "f7a531a89343b2785fe350eb6bfa512fbae68ab9c3497c73987774b10b5008a2",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/cb5127ba9e8c05752620/visual.json": "0dab1c0081d8406da35d44ea2032d609fa8c310b10a72fa376fee9c79ac9bb37",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/8a3ba4167bb022202178/visual.json": "22fad9c664d20ef7b53545c0213dbbdc3a896e0953ee75403e58d270a049eb19",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/936993afaf7c22d2359d/visual.json": "34d904e1ad559bd3287a8368db19e661acce47718e49099896172581378c388e",
+    "power-bi/report-definition/pages/de9ebd60e3480ebce3fd/visuals/882c06bc5838e381afa8/visual.json": "605ff72a06ab7b372ce3781491ba76853006b656692105c53b713d5b0f113d4e"
+  }
+}

@@ -1,0 +1,11 @@
+Total Cases = COALESCE(COUNTROWS('Cases'), 0)
+
+Open Cases = COALESCE(CALCULATE([Total Cases], KEEPFILTERS('Cases'[Status] IN {"Pending", "In Review"})), 0)
+
+Approved Cases = COALESCE(CALCULATE([Total Cases], KEEPFILTERS('Cases'[Status] = "Approved")), 0)
+
+Urgent Cases = COALESCE(CALCULATE([Total Cases], KEEPFILTERS('Cases'[Urgency] = "Urgent")), 0)
+
+Applied Decisions = COALESCE(CALCULATE(COUNTROWS(Decisions), Decisions[Outcome] = "Applied"), 0)
+
+Decisions Needing Reconciliation = COALESCE(CALCULATE(COUNTROWS(Decisions), Decisions[Outcome] IN {"Pending", "Failed"}), 0)

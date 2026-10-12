@@ -1,0 +1,44 @@
+{
+  "scopeMatch": null,
+  "diagnosis": {
+    "value": "Lumbar Radiculopathy",
+    "quote": "Diagnosis: Lumbar Radiculopathy."
+  },
+  "treatment": {
+    "value": "Lumbar Epidural Steroid Injection",
+    "quote": "Requested treatment: Lumbar Epidural Steroid Injection."
+  },
+  "imagingAvailable": {
+    "value": null,
+    "quote": ""
+  },
+  "medicationTrial": {
+    "value": null,
+    "quote": ""
+  },
+  "specialistEvaluation": {
+    "value": null,
+    "quote": ""
+  },
+  "functionalLimitation": {
+    "value": null,
+    "quote": ""
+  },
+  "conservativeTreatmentFailed": {
+    "value": null,
+    "quote": ""
+  },
+  "physicalTherapyWeeks": {
+    "value": null,
+    "quote": "Note A: Completed physical therapy for 6 weeks.\nNote B: Completed physical therapy for 2 weeks."
+  },
+  "symptomsDurationMonths": {
+    "value": null,
+    "quote": "Symptoms have persisted for 12 weeks."
+  },
+  "warnings": [
+    "Conflicting statements regarding completed physical therapy duration.",
+    "Symptoms duration stated in weeks, not months as required.",
+    "Scope match cannot be confirmed due to absence of explicit confirmation for both diagnosis and treatment within scope."
+  ]
+}

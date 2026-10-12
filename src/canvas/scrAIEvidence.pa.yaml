@@ -1,0 +1,420 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  scrAIEvidence:
+    Properties:
+      Fill: =RGBA(248,250,252,1)
+      LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+      OnVisible: =Set(varAIConfirmed,false); Set(varAIReviewFingerprint,Blank()); Set(varAIBusy,false); Set(varAIError,Blank()); Set(varAIScope,false); Set(varAIJSON,Blank()); Reset(txtAIDocument); Reset(ddAIimagingAvailable); Reset(ddAImedicationTrial); Reset(ddAIspecialistEvaluation); Reset(ddAIfunctionalLimitation); Reset(ddAIconservativeTreatmentFailed); Reset(txtAIphysicalTherapyWeeks); Reset(txtAIsymptomsDurationMonths); Reset(chkAIConfirm)
+    Children:
+      - lblAITitle:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            Size: =24
+            Text: ="Evidence review"
+            Width: =800
+            X: =24
+            Y: =16
+      - lblAIContext:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =32
+            Size: =15
+            Text: ="Case " & varSelectedCase.'Case Number' & " | Lumbar evidence assist"
+            Width: =1200
+            X: =24
+            Y: =68
+      - lblAIGuidance:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =44
+            Size: =12
+            Text: ="Review the extracted values against the source before saving. Approval remains a reviewer decision."
+            Width: =Parent.Width - 48
+            X: =24
+            Y: =104
+      - lblAIDoc:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(51,65,85,1)
+            Font: =Font.'Segoe UI'
+            Height: =30
+            Size: =14
+            Text: ="Source document"
+            Width: =610
+            X: =24
+            Y: =152
+      - txtAIDocument:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            AccessibleLabel: ="Fictional source document"
+            BorderColor: =RGBA(203,213,225,1)
+            BorderThickness: =1
+            Default: |-
+              ="FICTIONAL DEMONSTRATION DOCUMENT" & Char(10) & "Diagnosis: Lumbar Radiculopathy." & Char(10) & "Requested treatment: Lumbar Epidural Steroid Injection." & Char(10) & "Lumbar MRI imaging is available for review." & Char(10) & "Completed physical therapy for 6 weeks." & Char(10) & "Symptoms have persisted for 3 months." & Char(10) & "A medication trial was completed without adequate relief." & Char(10) & "A specialist evaluation was completed." & Char(10) & "Functional limitation affects walking and daily activities." & Char(10) & "Conservative treatment failed to provide adequate relief."
+            DisplayMode: =If(varAIBusy,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =370
+            MaxLength: =12000
+            Mode: =TextMode.MultiLine
+            OnChange: =Set(varAIConfirmed,false); Set(varAIJSON,Blank()); Set(varAIScope,false); Set(varAIReviewFingerprint,Blank())
+            Width: =Parent.Width / 2 - 56
+            X: =24
+            Y: =190
+      - lblAISuggestions:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(51,65,85,1)
+            Font: =Font.'Segoe UI'
+            Height: =30
+            Size: =14
+            Text: ="Extracted evidence"
+            Width: =650
+            X: =Parent.Width / 2 + 16
+            Y: =152
+      - lblAIimagingAvailable:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            Size: =12
+            Text: ="Imaging available"
+            Width: =440
+            X: =Parent.Width / 2 + 16
+            Y: =190
+      - ddAIimagingAvailable:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            AccessibleLabel: ="Imaging available"
+            BorderColor: =RGBA(203,213,225,1)
+            Default: =IfError(With({v:varAIJSON.imagingAvailable.value,q:Text(varAIJSON.imagingAvailable.quote)},If(IsBlank(v)||IsBlank(q)||!IfError(Find(q,txtAIDocument.Text)>0,false),"Unknown",If(Boolean(v),"Yes","No"))),"Unknown")
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =30
+            Items: =["Unknown","Yes","No"]
+            Items.Value: =Value
+            OnChange: =Set(varAIConfirmed,false)
+            Size: =12
+            Width: =200
+            X: =Parent.Width - 236
+            Y: =190
+      - lblAIQuoteimagingAvailable:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =10
+            Text: =IfError(With({q:Text(varAIJSON.imagingAvailable.quote)},If(IsBlank(q),"No supporting excerpt",If(IfError(Find(q,txtAIDocument.Text)>0,false),q,"Excerpt not found in source — verify manually"))),"No supporting excerpt")
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =216
+      - lblAImedicationTrial:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            Size: =12
+            Text: ="Medication trial completed"
+            Width: =440
+            X: =Parent.Width / 2 + 16
+            Y: =254
+      - ddAImedicationTrial:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            AccessibleLabel: ="Medication trial completed"
+            BorderColor: =RGBA(203,213,225,1)
+            Default: =IfError(With({v:varAIJSON.medicationTrial.value,q:Text(varAIJSON.medicationTrial.quote)},If(IsBlank(v)||IsBlank(q)||!IfError(Find(q,txtAIDocument.Text)>0,false),"Unknown",If(Boolean(v),"Yes","No"))),"Unknown")
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =30
+            Items: =["Unknown","Yes","No"]
+            Items.Value: =Value
+            OnChange: =Set(varAIConfirmed,false)
+            Size: =12
+            Width: =200
+            X: =Parent.Width - 236
+            Y: =254
+      - lblAIQuotemedicationTrial:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =10
+            Text: =IfError(With({q:Text(varAIJSON.medicationTrial.quote)},If(IsBlank(q),"No supporting excerpt",If(IfError(Find(q,txtAIDocument.Text)>0,false),q,"Excerpt not found in source — verify manually"))),"No supporting excerpt")
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =280
+      - lblAIspecialistEvaluation:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            Size: =12
+            Text: ="Specialist evaluation"
+            Width: =440
+            X: =Parent.Width / 2 + 16
+            Y: =318
+      - ddAIspecialistEvaluation:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            AccessibleLabel: ="Specialist evaluation"
+            BorderColor: =RGBA(203,213,225,1)
+            Default: =IfError(With({v:varAIJSON.specialistEvaluation.value,q:Text(varAIJSON.specialistEvaluation.quote)},If(IsBlank(v)||IsBlank(q)||!IfError(Find(q,txtAIDocument.Text)>0,false),"Unknown",If(Boolean(v),"Yes","No"))),"Unknown")
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =30
+            Items: =["Unknown","Yes","No"]
+            Items.Value: =Value
+            OnChange: =Set(varAIConfirmed,false)
+            Size: =12
+            Width: =200
+            X: =Parent.Width - 236
+            Y: =318
+      - lblAIQuotespecialistEvaluation:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =10
+            Text: =IfError(With({q:Text(varAIJSON.specialistEvaluation.quote)},If(IsBlank(q),"No supporting excerpt",If(IfError(Find(q,txtAIDocument.Text)>0,false),q,"Excerpt not found in source — verify manually"))),"No supporting excerpt")
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =344
+      - lblAIfunctionalLimitation:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            Size: =12
+            Text: ="Functional limitation"
+            Width: =440
+            X: =Parent.Width / 2 + 16
+            Y: =382
+      - ddAIfunctionalLimitation:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            AccessibleLabel: ="Functional limitation"
+            BorderColor: =RGBA(203,213,225,1)
+            Default: =IfError(With({v:varAIJSON.functionalLimitation.value,q:Text(varAIJSON.functionalLimitation.quote)},If(IsBlank(v)||IsBlank(q)||!IfError(Find(q,txtAIDocument.Text)>0,false),"Unknown",If(Boolean(v),"Yes","No"))),"Unknown")
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =30
+            Items: =["Unknown","Yes","No"]
+            Items.Value: =Value
+            OnChange: =Set(varAIConfirmed,false)
+            Size: =12
+            Width: =200
+            X: =Parent.Width - 236
+            Y: =382
+      - lblAIQuotefunctionalLimitation:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =10
+            Text: =IfError(With({q:Text(varAIJSON.functionalLimitation.quote)},If(IsBlank(q),"No supporting excerpt",If(IfError(Find(q,txtAIDocument.Text)>0,false),q,"Excerpt not found in source — verify manually"))),"No supporting excerpt")
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =408
+      - lblAIconservativeTreatmentFailed:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            Size: =12
+            Text: ="Conservative treatment failed"
+            Width: =440
+            X: =Parent.Width / 2 + 16
+            Y: =446
+      - ddAIconservativeTreatmentFailed:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            AccessibleLabel: ="Conservative treatment failed"
+            BorderColor: =RGBA(203,213,225,1)
+            Default: =IfError(With({v:varAIJSON.conservativeTreatmentFailed.value,q:Text(varAIJSON.conservativeTreatmentFailed.quote)},If(IsBlank(v)||IsBlank(q)||!IfError(Find(q,txtAIDocument.Text)>0,false),"Unknown",If(Boolean(v),"Yes","No"))),"Unknown")
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =30
+            Items: =["Unknown","Yes","No"]
+            Items.Value: =Value
+            OnChange: =Set(varAIConfirmed,false)
+            Size: =12
+            Width: =200
+            X: =Parent.Width - 236
+            Y: =446
+      - lblAIQuoteconservativeTreatmentFailed:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =10
+            Text: =IfError(With({q:Text(varAIJSON.conservativeTreatmentFailed.quote)},If(IsBlank(q),"No supporting excerpt",If(IfError(Find(q,txtAIDocument.Text)>0,false),q,"Excerpt not found in source — verify manually"))),"No supporting excerpt")
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =472
+      - lblAIphysicalTherapyWeeks:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            Size: =12
+            Text: ="Completed PT (weeks)"
+            Width: =440
+            X: =Parent.Width / 2 + 16
+            Y: =510
+      - txtAIphysicalTherapyWeeks:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            AccessibleLabel: ="Completed PT (weeks)"
+            BorderColor: =RGBA(203,213,225,1)
+            Default: =IfError(With({v:varAIJSON.physicalTherapyWeeks.value,q:Text(varAIJSON.physicalTherapyWeeks.quote)},If(IsBlank(v)||IsBlank(q)||!IfError(Find(q,txtAIDocument.Text)>0,false)||Value(v)<0,Blank(),Text(Value(v)))),Blank())
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Format: =TextFormat.Number
+            Height: =30
+            HintText: ="Unknown"
+            OnChange: =Set(varAIConfirmed,false)
+            Size: =12
+            Width: =200
+            X: =Parent.Width - 236
+            Y: =510
+      - lblAIQuotephysicalTherapyWeeks:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =10
+            Text: =IfError(Coalesce(Text(varAIJSON.physicalTherapyWeeks.quote),"No supporting excerpt"),"No supporting excerpt")
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =536
+      - lblAIsymptomsDurationMonths:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(15,23,42,1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            Size: =12
+            Text: ="Symptoms (months)"
+            Width: =440
+            X: =Parent.Width / 2 + 16
+            Y: =574
+      - txtAIsymptomsDurationMonths:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            AccessibleLabel: ="Symptoms (months)"
+            BorderColor: =RGBA(203,213,225,1)
+            Default: =IfError(With({v:varAIJSON.symptomsDurationMonths.value,q:Text(varAIJSON.symptomsDurationMonths.quote)},If(IsBlank(v)||IsBlank(q)||!IfError(Find(q,txtAIDocument.Text)>0,false)||Value(v)<0,Blank(),Text(Value(v)))),Blank())
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Format: =TextFormat.Number
+            Height: =30
+            HintText: ="Unknown"
+            OnChange: =Set(varAIConfirmed,false)
+            Size: =12
+            Width: =200
+            X: =Parent.Width - 236
+            Y: =574
+      - lblAIQuotesymptomsDurationMonths:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(100,116,139,1)
+            Font: =Font.'Segoe UI'
+            Height: =36
+            Size: =10
+            Text: =IfError(Coalesce(Text(varAIJSON.symptomsDurationMonths.quote),"No supporting excerpt"),"No supporting excerpt")
+            Width: =Parent.Width / 2 - 52
+            X: =Parent.Width / 2 + 16
+            Y: =600
+      - btnAIExtract:
+          Control: Classic/Button@2.2.0
+          Properties:
+            DisplayMode: =If(varAIBusy||Len(Trim(txtAIDocument.Text))<50,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =44
+            OnSelect: =Set(varAIConfirmed,false); Set(varAIReviewFingerprint,Blank()); Set(varAIBusy,true); Set(varAIError,Blank()); Set(varAIJSON,Blank()); Set(varAIScope,false); Reset(ddAIimagingAvailable); Reset(ddAImedicationTrial); Reset(ddAIspecialistEvaluation); Reset(ddAIfunctionalLimitation); Reset(ddAIconservativeTreatmentFailed); Reset(txtAIphysicalTherapyWeeks); Reset(txtAIsymptomsDurationMonths); Reset(chkAIConfirm); IfError(Set(varAISource,txtAIDocument.Text); Set(varAIResponse,'Prior Authorization Evidence Extractor'.Predict(varAISource)); Set(varAIJSON,ParseJSON(varAIResponse.Text)); Set(varAIScope,Coalesce(IfError(Text(varAIJSON.diagnosis.value)="Lumbar Radiculopathy" && Text(varAIJSON.treatment.value)="Lumbar Epidural Steroid Injection" && !IsBlank(Text(varAIJSON.diagnosis.quote)) && !IsBlank(Text(varAIJSON.treatment.quote)) && Find(Text(varAIJSON.diagnosis.quote),varAISource)>0 && Find(Text(varAIJSON.treatment.quote),varAISource)>0,false),false)); Reset(ddAIimagingAvailable); Reset(ddAImedicationTrial); Reset(ddAIspecialistEvaluation); Reset(ddAIfunctionalLimitation); Reset(ddAIconservativeTreatmentFailed); Reset(txtAIphysicalTherapyWeeks); Reset(txtAIsymptomsDurationMonths); Reset(chkAIConfirm),Set(varAIError,"Extraction unavailable. Use the regular evidence form or try again.")); Set(varAIBusy,false)
+            Size: =14
+            Text: =If(varAIBusy,"Extracting…","Extract evidence")
+            Width: =260
+            X: =24
+            Y: =580
+      - lblAIStatus:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(71,85,105,1)
+            Font: =Font.'Segoe UI'
+            Height: =68
+            Size: =12
+            Text: =If(varAIBusy,"Reading document…",If(!IsBlank(varAIError),varAIError,If(varAIScope=true,"Ready for review. Resolve any Unknown values before saving.","Add a document matching this case’s diagnosis and treatment.")))
+            Width: =Parent.Width / 2 - 56
+            X: =24
+            Y: =634
+      - lblAIWarnings:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(146,64,14,1)
+            Font: =Font.'Segoe UI'
+            Height: =30
+            Size: =10
+            Text: =IfError(Concat(Table(varAIJSON.warnings),Text(Value)," | "),"")
+            Width: =670
+            X: =Parent.Width / 2 + 16
+            Y: =638
+      - chkAIConfirm:
+          Control: Classic/CheckBox@2.1.0
+          Properties:
+            CheckboxSize: =24
+            Default: =varAIConfirmed
+            DisplayMode: =If(varAIBusy||!varAIScope,DisplayMode.Disabled,DisplayMode.Edit)
+            Height: =32
+            OnCheck: =Set(varAIConfirmed,true); Set(varAIReviewFingerprint,ddAIimagingAvailable.Selected.Value & "|" & ddAImedicationTrial.Selected.Value & "|" & ddAIspecialistEvaluation.Selected.Value & "|" & ddAIfunctionalLimitation.Selected.Value & "|" & ddAIconservativeTreatmentFailed.Selected.Value & "|" & txtAIphysicalTherapyWeeks.Text & "|" & txtAIsymptomsDurationMonths.Text & "|" & txtAIDocument.Text)
+            OnUncheck: =Set(varAIConfirmed,false)
+            Reset: =!varAIConfirmed
+            Size: =11
+            Text: ="I reviewed these values against the source."
+            Width: =670
+            X: =Parent.Width / 2 + 16
+            Y: =670
+      - btnAIApply:
+          Control: Classic/Button@2.2.0
+          Properties:
+            DisplayMode: =If(chkAIConfirm.Value && varAIScope && !varAIBusy && ddAIimagingAvailable.Selected.Value<>"Unknown" && ddAImedicationTrial.Selected.Value<>"Unknown" && ddAIspecialistEvaluation.Selected.Value<>"Unknown" && ddAIfunctionalLimitation.Selected.Value<>"Unknown" && ddAIconservativeTreatmentFailed.Selected.Value<>"Unknown" && !IsBlank(txtAIphysicalTherapyWeeks.Text) && !IsBlank(txtAIsymptomsDurationMonths.Text) && IfError(Value(txtAIphysicalTherapyWeeks.Text)>=0 && Value(txtAIsymptomsDurationMonths.Text)>=0,false) && IfError(Mod(Value(txtAIphysicalTherapyWeeks.Text),1)=0 && Mod(Value(txtAIsymptomsDurationMonths.Text),1)=0,false) && varAIConfirmed && varAIReviewFingerprint=(ddAIimagingAvailable.Selected.Value & "|" & ddAImedicationTrial.Selected.Value & "|" & ddAIspecialistEvaluation.Selected.Value & "|" & ddAIfunctionalLimitation.Selected.Value & "|" & ddAIconservativeTreatmentFailed.Selected.Value & "|" & txtAIphysicalTherapyWeeks.Text & "|" & txtAIsymptomsDurationMonths.Text & "|" & txtAIDocument.Text),DisplayMode.Edit,DisplayMode.Disabled)
+            Fill: =RGBA(15,108,189,1)
+            Height: =42
+            OnSelect: =If(chkAIConfirm.Value && varAIScope && !varAIBusy && ddAIimagingAvailable.Selected.Value<>"Unknown" && ddAImedicationTrial.Selected.Value<>"Unknown" && ddAIspecialistEvaluation.Selected.Value<>"Unknown" && ddAIfunctionalLimitation.Selected.Value<>"Unknown" && ddAIconservativeTreatmentFailed.Selected.Value<>"Unknown" && !IsBlank(txtAIphysicalTherapyWeeks.Text) && !IsBlank(txtAIsymptomsDurationMonths.Text) && IfError(Value(txtAIphysicalTherapyWeeks.Text)>=0 && Value(txtAIsymptomsDurationMonths.Text)>=0,false) && IfError(Mod(Value(txtAIphysicalTherapyWeeks.Text),1)=0 && Mod(Value(txtAIsymptomsDurationMonths.Text),1)=0,false) && varAIConfirmed && varAIReviewFingerprint=(ddAIimagingAvailable.Selected.Value & "|" & ddAImedicationTrial.Selected.Value & "|" & ddAIspecialistEvaluation.Selected.Value & "|" & ddAIfunctionalLimitation.Selected.Value & "|" & ddAIconservativeTreatmentFailed.Selected.Value & "|" & txtAIphysicalTherapyWeeks.Text & "|" & txtAIsymptomsDurationMonths.Text & "|" & txtAIDocument.Text),IfError(Set(varSelectedCase,Patch('Prior Authorization Cases',varSelectedCase,{'Imaging Available':ddAIimagingAvailable.Selected.Value="Yes",'Medication Trial':ddAImedicationTrial.Selected.Value="Yes",'Specialist Evaluation':ddAIspecialistEvaluation.Selected.Value="Yes",'Functional Limitation':ddAIfunctionalLimitation.Selected.Value="Yes",'Conservative Treatment Failed':ddAIconservativeTreatmentFailed.Selected.Value="Yes",'Physical Therapy Weeks':Value(txtAIphysicalTherapyWeeks.Text),'Symptoms Duration Months':Value(txtAIsymptomsDurationMonths.Text)})); Set(varAnalyzed,false); Clear(colAuthorizationResults); Notify("Reviewed evidence saved. Analyze requirements before a decision.",NotificationType.Success); Navigate(scrCaseDetails,ScreenTransition.None),Notify("Evidence could not be saved. Try again.",NotificationType.Error)))
+            Size: =14
+            Text: ="Save reviewed evidence"
+            Width: =410
+            X: =Parent.Width - Self.Width - 36
+            Y: =712
+      - btnAIBack:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =RGBA(203,213,225,1)
+            BorderThickness: =1
+            Color: =RGBA(51,65,85,1)
+            DisplayMode: =If(varAIBusy,DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: =Color.White
+            Height: =42
+            OnSelect: =Navigate(scrCaseDetails,ScreenTransition.None)
+            Size: =14
+            Text: ="Back to case"
+            Width: =240
+            X: =24
+            Y: =712

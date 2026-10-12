@@ -1,0 +1,263 @@
+[
+  {
+    "display_name": "Prior Authorization Cases",
+    "logical_name": "cr36f_priorauthorizationcase",
+    "primary_name": "cr36f_casenumber",
+    "columns": [
+      {
+        "name": "Assigned Reviewer",
+        "logical_name": "cr36f_assignedreviewer",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Case Number",
+        "logical_name": "cr36f_casenumber",
+        "type": "String",
+        "maximum_length": 850
+      },
+      {
+        "name": "Clinical Notes",
+        "logical_name": "cr36f_clinicalnotes",
+        "type": "Memo",
+        "maximum_length": 100
+      },
+      {
+        "name": "Conservative Treatment Failed",
+        "logical_name": "cr36f_conservativetreatmentfailed",
+        "type": "Boolean"
+      },
+      {
+        "name": "Date of Birth",
+        "logical_name": "cr36f_dateofbirth",
+        "type": "DateTime"
+      },
+      {
+        "name": "Decision History",
+        "logical_name": "cr36f_decisionhistory",
+        "type": "Memo",
+        "maximum_length": 100000
+      },
+      {
+        "name": "Diagnosis",
+        "logical_name": "cr36f_diagnosis",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Functional Limitation",
+        "logical_name": "cr36f_functionallimitation",
+        "type": "Boolean"
+      },
+      {
+        "name": "Imaging Available",
+        "logical_name": "cr36f_imagingavailable",
+        "type": "Boolean"
+      },
+      {
+        "name": "Medication Trial",
+        "logical_name": "cr36f_medicationtrial",
+        "type": "Boolean"
+      },
+      {
+        "name": "Patient ID",
+        "logical_name": "cr36f_patientid",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Patient Name",
+        "logical_name": "cr36f_patientname",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Payer",
+        "logical_name": "cr36f_payer",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Physical Therapy Weeks",
+        "logical_name": "cr36f_physicaltherapyweeks",
+        "type": "Integer"
+      },
+      {
+        "name": "Prior Authorization Case",
+        "logical_name": "cr36f_priorauthorizationcaseid",
+        "type": "Uniqueidentifier"
+      },
+      {
+        "name": "Request Date",
+        "logical_name": "cr36f_requestdate",
+        "type": "DateTime"
+      },
+      {
+        "name": "Specialist Evaluation",
+        "logical_name": "cr36f_specialistevaluation",
+        "type": "Boolean"
+      },
+      {
+        "name": "Status",
+        "logical_name": "cr36f_status",
+        "type": "Picklist"
+      },
+      {
+        "name": "Submission Date",
+        "logical_name": "cr36f_submissiondate",
+        "type": "DateTime"
+      },
+      {
+        "name": "Symptoms Duration Months",
+        "logical_name": "cr36f_symptomsdurationmonths",
+        "type": "Integer"
+      },
+      {
+        "name": "Treatment",
+        "logical_name": "cr36f_treatment",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Urgent",
+        "logical_name": "cr36f_urgent",
+        "type": "Boolean"
+      }
+    ]
+  },
+  {
+    "display_name": "Prior Authorization Requirements",
+    "logical_name": "cr36f_priorauthorizationrequirement",
+    "primary_name": "cr36f_requirementname",
+    "columns": [
+      {
+        "name": "Active",
+        "logical_name": "cr36f_active",
+        "type": "Boolean"
+      },
+      {
+        "name": "Diagnosis",
+        "logical_name": "cr36f_diagnosis",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Is Required",
+        "logical_name": "cr36f_isrequired",
+        "type": "Boolean"
+      },
+      {
+        "name": "Minimum Duration",
+        "logical_name": "cr36f_minimumduration",
+        "type": "Integer"
+      },
+      {
+        "name": "Payer",
+        "logical_name": "cr36f_payer",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Prior Authorization Requirement",
+        "logical_name": "cr36f_priorauthorizationrequirementid",
+        "type": "Uniqueidentifier"
+      },
+      {
+        "name": "Required Evidence",
+        "logical_name": "cr36f_requiredevidence",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Requirement Description",
+        "logical_name": "cr36f_requirementdescription",
+        "type": "Memo",
+        "maximum_length": 100
+      },
+      {
+        "name": "Requirement Name",
+        "logical_name": "cr36f_requirementname",
+        "type": "String",
+        "maximum_length": 850
+      },
+      {
+        "name": "Rule Type",
+        "logical_name": "cr36f_ruletype",
+        "type": "Picklist"
+      },
+      {
+        "name": "Treatment",
+        "logical_name": "cr36f_treatment",
+        "type": "String",
+        "maximum_length": 100
+      }
+    ]
+  },
+  {
+    "display_name": "Authorization Decisions",
+    "logical_name": "cr36f_authorizationdecision",
+    "primary_name": "cr36f_decisionname",
+    "columns": [
+      {
+        "name": "Authorization Case",
+        "logical_name": "cr36f_authorizationcase",
+        "type": "Lookup",
+        "targets": [
+          "cr36f_priorauthorizationcase"
+        ]
+      },
+      {
+        "name": "Authorization Decision",
+        "logical_name": "cr36f_authorizationdecisionid",
+        "type": "Uniqueidentifier"
+      },
+      {
+        "name": "Decision Name",
+        "logical_name": "cr36f_decisionname",
+        "type": "String",
+        "maximum_length": 850
+      },
+      {
+        "name": "Decision Time",
+        "logical_name": "cr36f_decisiontime",
+        "type": "DateTime"
+      },
+      {
+        "name": "New Status",
+        "logical_name": "cr36f_newstatus",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Outcome",
+        "logical_name": "cr36f_outcome",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Previous Status",
+        "logical_name": "cr36f_previousstatus",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Reason",
+        "logical_name": "cr36f_reason",
+        "type": "String",
+        "maximum_length": 1000
+      },
+      {
+        "name": "Reviewer",
+        "logical_name": "cr36f_reviewer",
+        "type": "String",
+        "maximum_length": 100
+      },
+      {
+        "name": "Reviewer Notes",
+        "logical_name": "cr36f_reviewernotes",
+        "type": "Memo",
+        "maximum_length": 2000
+      }
+    ]
+  }
+]

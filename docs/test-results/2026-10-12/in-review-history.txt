@@ -1,0 +1,68 @@
+
+  - iframe [active] [name="EmbeddedStudio"]:
+    - application:
+      - region "Authoring canvas":
+        - button "Publish (Ctrl+Shift+P)":
+          - generic: Publish
+        - button "Close preview mode (Esc)":
+          - generic: 
+        - button "Tablets":
+        - button "Phones":
+        - button "Browser options selected":
+        - generic "scrCaseDetails"
+        - button "Back to dashboard":
+          - generic: Back to dashboard
+        - button "Close history" [active]:
+          - generic: Close history
+        - button "Save and check requirements":
+          - generic: Save and check requirements
+        - button "Pending" [disabled]:
+          - generic: Pending
+        - button "In Review" [disabled]:
+          - generic: In Review
+        - button "Approved" [disabled]:
+          - generic: Approved
+        - button "Denied" [disabled]:
+          - generic: Denied
+        - generic: Case review
+        - generic: DEMO-E2E-1012 | Demo Workflow Test
+        - generic: "Status: In Review"
+        - text: "Payer: Aetna"
+        - text: "Treatment: Lumbar Epidural Steroid Injection"
+        - text: "Diagnosis: Lumbar Radiculopathy"
+        - generic: Decision history
+        - generic: Evidence
+        - generic: Physical therapy (weeks)
+        - generic: Symptoms duration (months)
+        - generic: Assigned reviewer (email)
+        - generic: Demonstration rules only. Not clinical guidance.
+        - textbox "Decision history, newest first":
+          - /placeholder: ""
+          - text: "2026-10-11 23:50:43 UTC | Pending → In Review [Applied] Reviewer: reviewer.qa@example.com Reason: Demonstration QA: evidence review started. Notes: End-to-end test: initial evidence saved and reopened successfully."
+        - textbox "Enter completed duration": "4"
+        - textbox "Enter completed duration": "2"
+        - textbox: reviewer.qa@example.com
+        - checkbox "Imaging Available" [checked]
+        - generic: Imaging Available
+        - checkbox "Medication Trial" [checked]
+        - generic: Medication Trial
+        - checkbox "Specialist Evaluation" [checked]
+        - generic: Specialist Evaluation
+        - checkbox "Functional Limitation" [checked]
+        - generic: Functional Limitation
+        - checkbox "Conservative Treatment Failed" [checked]
+        - generic: Conservative Treatment Failed
+        - button "Extract from document":
+          - generic: Extract from document
+        - button "Close": ×
+        - generic: Status and decision history saved.
+        - status
+      - region "Footer bar"
+      - status
+      - status:
+        - generic: scrCaseDetails of type Screen is selected
+      - status:
+        - generic: 43b0dc67-68af-47ae-9a9c-9e69d396ba3e data source was successfully added.
+      - status
+      - alert
+      - alert: Cannot edit in read-only editor

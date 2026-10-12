@@ -1,0 +1,66 @@
+
+  - iframe [active] [name="EmbeddedStudio"]:
+    - application:
+      - region "Authoring canvas":
+        - button "Publish (Ctrl+Shift+P)":
+          - generic: Publish
+        - button "Close preview mode (Esc)":
+          - generic: 
+        - button "Tablets":
+        - button "Phones":
+        - button "Browser options selected":
+        - generic "Screen1" [active]
+        - generic: Prior authorizations
+        - button "New case":
+          - generic: New case
+        - textbox "Search cases":
+          - /placeholder: "Search case # or patient"
+          - text: DEMO-E2E-1012
+        - button "Filter by status. All statuses": All statuses
+        - button "Filter by payer. All payers": All payers
+        - textbox "Filter by reviewer":
+          - /placeholder: Reviewer email
+        - button "Filter by urgency. All urgency": All urgency
+        - button "Clear":
+          - generic: Clear
+        - list "Gallery":
+          - listitem "Item 1. Selected.":
+            - generic: Item 1. Selected.
+            - generic: Total Cases
+            - generic: "49"
+          - listitem "Item 2":
+            - generic: Item 2
+            - generic: Pending
+            - generic: "9"
+          - listitem "Item 3":
+            - generic: Item 3
+            - generic: In Review
+            - generic: "9"
+          - listitem "Item 4":
+            - generic: Item 4
+            - generic: Approved
+            - generic: "26"
+          - listitem "Item 5":
+            - generic: Item 5
+            - generic: Denied
+            - generic: "5"
+        - generic: Cases
+        - generic: Case Number
+        - generic: Patient Name
+        - generic: Status
+        - list "Gallery":
+          - listitem "Item 1. Selected.":
+            - generic: Item 1. Selected.
+            - generic: DEMO-E2E-1012
+            - generic: Demo Workflow Test
+            - generic: Approved
+            - img "View item details":
+      - region "Footer bar"
+      - status
+      - status:
+        - generic: Screen1 of type Screen is selected
+      - status:
+        - generic: 43b0dc67-68af-47ae-9a9c-9e69d396ba3e data source was successfully added.
+      - status
+      - alert
+      - alert: Cannot edit in read-only editor

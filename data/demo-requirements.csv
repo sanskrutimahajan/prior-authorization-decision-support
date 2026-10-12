@@ -1,0 +1,33 @@
+Requirement Name,Payer,Treatment,Diagnosis,Minimum Duration,Active,Is Required,Required Evidence,Requirement Description
+Confirmed Diagnosis,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Imaging Available,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Physical Therapy,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,6,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Medication Trial,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Specialist Evaluation,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Symptoms Duration,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,3,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Functional Limitation,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Conservative Treatment Failed,Aetna,Lumbar Epidural Steroid Injection,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Confirmed Diagnosis,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Imaging Available,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Physical Therapy,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,6,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Medication Trial,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Specialist Evaluation,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Symptoms Duration,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,3,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Functional Limitation,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Conservative Treatment Failed,Blue Cross,Lumbar Radiculopathy,Lumbar Radiculopathy,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Confirmed Diagnosis,United Health,Total Knee Replacement,Knee Osteoarthritis,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Imaging Available,United Health,Total Knee Replacement,Knee Osteoarthritis,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Physical Therapy,United Health,Total Knee Replacement,Knee Osteoarthritis,6,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Medication Trial,United Health,Total Knee Replacement,Knee Osteoarthritis,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Specialist Evaluation,United Health,Total Knee Replacement,Knee Osteoarthritis,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Symptoms Duration,United Health,Total Knee Replacement,Knee Osteoarthritis,3,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Functional Limitation,United Health,Total Knee Replacement,Knee Osteoarthritis,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Conservative Treatment Failed,United Health,Total Knee Replacement,Knee Osteoarthritis,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Confirmed Diagnosis,Blue Cross,Xray,Fracture,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Imaging Available,Blue Cross,Xray,Fracture,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Specialist Evaluation,Blue Cross,Xray,Fracture,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Confirmed Diagnosis,Cigna,Radiology,Fracture,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Imaging Available,Cigna,Radiology,Fracture,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Specialist Evaluation,Cigna,Radiology,Fracture,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Confirmed Diagnosis,Cigna,Chemo Therapy,Breast Cancer,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.
+Specialist Evaluation,Cigna,Chemo Therapy,Breast Cancer,0,true,true,Demo evidence,Demonstration rule; not real payer policy or clinical guidance.

@@ -1,0 +1,43 @@
+{
+  "scopeMatch": {
+    "value": true,
+    "quote": "Diagnosis: Lumbar Radiculopathy.\nRequested treatment: Lumbar Epidural Steroid Injection."
+  },
+  "diagnosis": {
+    "value": "Lumbar Radiculopathy",
+    "quote": "Diagnosis: Lumbar Radiculopathy."
+  },
+  "treatment": {
+    "value": "Lumbar Epidural Steroid Injection",
+    "quote": "Requested treatment: Lumbar Epidural Steroid Injection."
+  },
+  "imagingAvailable": {
+    "value": true,
+    "quote": "Lumbar MRI imaging is available for review."
+  },
+  "medicationTrial": {
+    "value": true,
+    "quote": "A medication trial was completed without adequate relief."
+  },
+  "specialistEvaluation": {
+    "value": true,
+    "quote": "A specialist evaluation was completed."
+  },
+  "functionalLimitation": {
+    "value": true,
+    "quote": "Functional limitation affects walking and daily activities."
+  },
+  "conservativeTreatmentFailed": {
+    "value": true,
+    "quote": "Conservative treatment failed to provide adequate relief."
+  },
+  "physicalTherapyWeeks": {
+    "value": 6,
+    "quote": "Completed physical therapy for 6 weeks."
+  },
+  "symptomsDurationMonths": {
+    "value": 3,
+    "quote": "Symptoms have persisted for 3 months."
+  },
+  "warnings": []
+}

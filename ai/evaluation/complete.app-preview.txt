@@ -1,0 +1,44 @@
+        - generic "scrAIEvidence"
+        - generic: AI Evidence Review
+        - generic: Case DEMO-BI-007 | Lumbar evidence assist
+        - generic: Demo documents only. Check each suggestion against its excerpt, correct the fields, then confirm. AI does not decide approval.
+        - generic: SOURCE DOCUMENT
+        - textbox "Fictional source document":
+          - /placeholder: ""
+          - text: "FICTIONAL DEMONSTRATION DOCUMENT Diagnosis: Lumbar Radiculopathy. Requested treatment: Lumbar Epidural Steroid Injection. Lumbar MRI imaging is available for review. Completed physical therapy for 6 weeks. Symptoms have persisted for 3 months. A medication trial was completed without adequate relief. A specialist evaluation was completed. Functional limitation affects walking and daily activities. Conservative treatment failed to provide adequate relief."
+        - generic: REVIEW AND CORRECT
+        - generic: Imaging available
+        - button "Imaging available. Yes": "Yes"
+        - generic: Lumbar MRI imaging is available for review.
+        - generic: Medication trial completed
+        - button "Medication trial completed. Yes": "Yes"
+        - generic: A medication trial was completed without adequate relief.
+        - generic: Specialist evaluation
+        - button "Specialist evaluation. Yes": "Yes"
+        - generic: A specialist evaluation was completed.
+        - generic: Functional limitation
+        - button "Functional limitation. Yes": "Yes"
+        - generic: Functional limitation affects walking and daily activities.
+        - generic: Conservative treatment failed
+        - button "Conservative treatment failed. Yes": "Yes"
+        - generic: Conservative treatment failed to provide adequate relief.
+        - generic: Completed PT (weeks)
+        - textbox "Completed PT (weeks)":
+          - /placeholder: Unknown
+          - text: "6"
+        - generic: Completed physical therapy for 6 weeks.
+        - generic: Symptoms (months)
+        - textbox "Symptoms (months)":
+          - /placeholder: Unknown
+          - text: "3"
+        - generic: Symptoms have persisted for 3 months.
+        - button "Extract evidence" [active]:
+          - generic: Extract evidence
+        - generic: Suggestions ready. Unknown values need manual review.
+        - checkbox "I checked and corrected all seven fields against the document."
+        - generic: I checked and corrected all seven fields against the document.
+        - button "Save reviewed evidence" [disabled]:
+          - generic: Save reviewed evidence
+        - button "Back to case":
+          - generic: Back to case
+
